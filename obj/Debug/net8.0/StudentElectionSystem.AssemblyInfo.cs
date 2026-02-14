@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StudentElectionSystem")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1e556fef1f689986306933f94264449d3645256f")]
 [assembly: System.Reflection.AssemblyProductAttribute("StudentElectionSystem")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StudentElectionSystem")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

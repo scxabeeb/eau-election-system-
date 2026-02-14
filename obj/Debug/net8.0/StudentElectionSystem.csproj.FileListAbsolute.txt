@@ -131,3 +131,4 @@
 /Users/saedhabeb/Desktop/StudentElectionSystemFull/bin/Debug/net8.0/Microsoft.Extensions.Identity.Stores.dll
 /Users/saedhabeb/Desktop/StudentElectionSystemFull/bin/Debug/net8.0/Microsoft.Extensions.Options.dll
 /Users/saedhabeb/Desktop/StudentElectionSystemFull/obj/Debug/net8.0/StudentElectionSystem.MvcApplicationPartsAssemblyInfo.cs
+/Users/saedhabeb/Desktop/StudentElectionSystemFull/obj/Debug/net8.0/StudentElectionSystem.sourcelink.json
