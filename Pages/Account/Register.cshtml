@@ -1,0 +1,51 @@
+@page
+@model StudentElectionSystemFull.Pages.Account.RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <div class="card shadow">
+            <div class="card-header bg-dark text-white text-center">
+                <h4>Register</h4>
+            </div>
+
+            <div class="card-body">
+                <form method="post">
+
+                    <div class="mb-3">
+                        <label>Email</label>
+                        <input asp-for="Input.Email" class="form-control" />
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Password</label>
+                        <input asp-for="Input.Password" type="password" class="form-control" />
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Confirm Password</label>
+                        <input asp-for="Input.ConfirmPassword" type="password" class="form-control" />
+                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Role</label>
+                        <select asp-for="Input.Role" class="form-control">
+                            <option value="Admin">Admin</option>
+                            <option value="Supervisor">Supervisor</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-dark w-100">
+                        Register
+                    </button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

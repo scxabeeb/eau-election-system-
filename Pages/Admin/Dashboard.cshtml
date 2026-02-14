@@ -1,0 +1,150 @@
+@page
+@model StudentElectionSystem.Pages.Admin.DashboardModel
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div class="container-fluid py-4">
+
+    <!-- PAGE HEADER -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold mb-0">
+            🛠️ Admin Election Dashboard
+        </h2>
+        <span class="badge bg-success fs-6 px-3 py-2">
+            Election Active
+        </span>
+    </div>
+
+    <!-- SUMMARY CARDS -->
+    <div class="row g-4 mb-4">
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card border-0 shadow-sm rounded-4 bg-primary text-white">
+                <div class="card-body text-center">
+                    <div class="fs-2">👨‍🎓</div>
+                    <h6 class="mt-2">Total Students</h6>
+                    <h3 class="fw-bold">@Model.TotalStudents</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card border-0 shadow-sm rounded-4 bg-success text-white">
+                <div class="card-body text-center">
+                    <div class="fs-2">🏆</div>
+                    <h6 class="mt-2">Total Candidates</h6>
+                    <h3 class="fw-bold">@Model.TotalCandidates</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card border-0 shadow-sm rounded-4 bg-warning text-dark">
+                <div class="card-body text-center">
+                    <div class="fs-2">🗳️</div>
+                    <h6 class="mt-2">Total Votes</h6>
+                    <h3 class="fw-bold">@Model.TotalVotes</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card border-0 shadow-sm rounded-4 bg-dark text-white">
+                <div class="card-body text-center">
+                    <div class="fs-2">📊</div>
+                    <h6 class="mt-2">Participation</h6>
+
+                    @{
+                        var percentage = Model.TotalStudents > 0
+                            ? (int)((double)Model.TotalVotes / Model.TotalStudents * 100)
+                            : 0;
+                    }
+
+                    <h3 class="fw-bold">@percentage%</h3>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- CHART SECTION -->
+    <div class="row">
+        <div class="col-xl-8 col-lg-10">
+
+            <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-body p-4">
+
+                    <h5 class="fw-bold mb-4">
+                        📊 Vote Percentage Per Candidate
+                    </h5>
+
+                    <canvas id="voteChart" height="120"></canvas>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+@{
+    var totalVotes = Model.TotalVotes;
+
+    var percentageData = Model.VoteCounts
+        .Select(v => totalVotes > 0
+            ? Math.Round((double)v / totalVotes * 100, 1)
+            : 0)
+        .ToList();
+}
+
+<script>
+    const ctx = document.getElementById('voteChart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.CandidateNames)),
+            datasets: [{
+                label: 'Percentage (%)',
+                data: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(percentageData)),
+                backgroundColor: [
+                    'rgba(13,110,253,0.7)',
+                    'rgba(25,135,84,0.7)',
+                    'rgba(255,193,7,0.7)',
+                    'rgba(220,53,69,0.7)'
+                ],
+                borderRadius: 6
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100,
+                    ticks: {
+                        callback: function(value) {
+                            return value + '%';
+                        }
+                    }
+                }
+            },
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return context.raw + '%';
+                        }
+                    }
+                },
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+</script>

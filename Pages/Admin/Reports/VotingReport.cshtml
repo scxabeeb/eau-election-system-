@@ -1,0 +1,130 @@
+@page
+@model StudentElectionSystem.Pages.Admin.Reports.VotingReportModel
+@{
+    ViewData["Title"] = "Voting Report";
+}
+
+<h3 class="mb-4">📊 Voting Report</h3>
+
+<!-- SUMMARY CARDS -->
+<div class="row g-4 mb-4">
+
+    <!-- TOTAL STUDENTS -->
+    <div class="col-md-4">
+        <a asp-page="/Admin/Reports/StudentsList"
+           asp-route-type="all"
+           asp-route-faculty="@Model.Faculty"
+           asp-route-class="@Model.Class"
+           class="text-decoration-none text-dark">
+
+            <div class="card shadow-sm text-center h-100">
+                <div class="card-body">
+                    <h6 class="text-muted">👨‍🎓 Total Students</h6>
+                    <h3 class="fw-bold">@Model.TotalStudents</h3>
+                    <small class="text-primary">View students</small>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <!-- VOTED -->
+    <div class="col-md-4">
+        <a asp-page="/Admin/Reports/StudentsList"
+           asp-route-type="voted"
+           asp-route-faculty="@Model.Faculty"
+           asp-route-class="@Model.Class"
+           class="text-decoration-none text-dark">
+
+            <div class="card shadow-sm text-center h-100">
+                <div class="card-body">
+                    <h6 class="text-muted">🗳️ Voted</h6>
+                    <h3 class="fw-bold text-success">@Model.TotalVoted</h3>
+                    <small class="text-primary">View voters</small>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <!-- NOT VOTED -->
+    <div class="col-md-4">
+        <a asp-page="/Admin/Reports/StudentsList"
+           asp-route-type="notvoted"
+           asp-route-faculty="@Model.Faculty"
+           asp-route-class="@Model.Class"
+           class="text-decoration-none text-dark">
+
+            <div class="card shadow-sm text-center h-100">
+                <div class="card-body">
+                    <h6 class="text-muted">🚫 Not Voted</h6>
+                    <h3 class="fw-bold text-danger">@Model.NotVoted</h3>
+                    <small class="text-primary">View list</small>
+                </div>
+            </div>
+        </a>
+    </div>
+
+</div>
+
+<!-- FILTER FORM -->
+<form method="get" class="card p-3 shadow-sm mb-4">
+    <div class="row g-3">
+
+        <div class="col-md-3">
+            <label class="form-label">Faculty</label>
+            <select asp-for="Faculty" asp-items="Model.Faculties" class="form-select">
+                <option value="">All Faculties</option>
+            </select>
+        </div>
+
+        <div class="col-md-3">
+            <label class="form-label">Class</label>
+            <select asp-for="Class" asp-items="Model.Classes" class="form-select">
+                <option value="">All Classes</option>
+            </select>
+        </div>
+
+        <div class="col-md-3">
+            <label class="form-label">Candidate</label>
+            <select asp-for="CandidateId" asp-items="Model.Candidates" class="form-select">
+                <option value="">All Candidates</option>
+            </select>
+        </div>
+
+        <div class="col-md-3 d-flex align-items-end">
+            <button class="btn btn-primary w-100">
+                Filter Report
+            </button>
+        </div>
+
+    </div>
+</form>
+
+<!-- RESULTS TABLE -->
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Candidate</th>
+            <th>Total Votes</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Results.Any())
+        {
+            foreach (var item in Model.Results)
+            {
+                <tr>
+                    <td>@item.CandidateName</td>
+                    <td>@item.TotalVotes</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="2" class="text-center text-muted">
+                    No data found for selected filters
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

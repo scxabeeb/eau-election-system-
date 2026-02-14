@@ -1,0 +1,56 @@
+@page
+@model StudentElectionSystem.Pages.Admin.Students.CreateModel
+
+<h3>Add Student</h3>
+
+<form method="post" enctype="multipart/form-data" class="card p-4 shadow-sm">
+
+    <div class="mb-2">
+        <input asp-for="Student.StudentId"
+               class="form-control"
+               placeholder="Student ID" />
+        <span asp-validation-for="Student.StudentId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-2">
+        <input asp-for="Student.FullName"
+               class="form-control"
+               placeholder="Full Name" />
+        <span asp-validation-for="Student.FullName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-2">
+        <input asp-for="Student.Faculty"
+               class="form-control"
+               placeholder="Faculty" />
+        <span asp-validation-for="Student.Faculty" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <input asp-for="Student.Class"
+               class="form-control"
+               placeholder="Class" />
+        <span asp-validation-for="Student.Class" class="text-danger"></span>
+    </div>
+
+    <!-- Student Image -->
+    <div class="mb-3">
+        <label class="form-label">Student Photo</label>
+        <input type="file"
+               asp-for="StudentImage"
+               class="form-control"
+               accept="image/*" />
+    </div>
+
+    <button type="submit" class="btn btn-success">
+        Save
+    </button>
+
+    <a href="/Admin/Students" class="btn btn-secondary ms-2">
+        Cancel
+    </a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,12 @@
+@page
+@model StudentElectionSystem.Pages.Admin.Students.DeleteModel
+
+<h3 class="text-danger">Delete Student</h3>
+
+<p>Are you sure you want to delete <strong>@Model.Student.FullName</strong>?</p>
+
+<form method="post">
+    <input type="hidden" asp-for="Student.Id" />
+    <button class="btn btn-danger">Delete</button>
+    <a href="/Admin/Students" class="btn btn-secondary">Cancel</a>
+</form>

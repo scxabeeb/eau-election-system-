@@ -1,0 +1,96 @@
+@page
+@model StudentElectionSystem.Pages.Admin.Reports.StudentsListModel
+@{
+    ViewData["Title"] = "Students List";
+}
+
+<h4 class="mb-4">@Model.PageTitle</h4>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped align-middle shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>Photo</th>
+                <th>Student ID</th>
+                <th>Name</th>
+                <th>Faculty</th>
+                <th>Class</th>
+                <th>Status</th>
+                <th>Voting Date (EAT)</th>
+                <th>Voting Time (EAT)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var s in Model.Students)
+            {
+                DateTime? eatTime = null;
+
+                if (s.VerifiedAt.HasValue)
+                {
+                    eatTime = s.VerifiedAt.Value
+                        .ToUniversalTime()
+                        .AddHours(3); // East Africa Time (UTC+3)
+                }
+
+                <tr>
+                    <!-- Photo -->
+                    <td class="text-center">
+                        @if (s.VerificationPhoto != null)
+                        {
+                            <img src="data:image/png;base64,@Convert.ToBase64String(s.VerificationPhoto)"
+                                 class="rounded-circle border"
+                                 width="50"
+                                 height="50" />
+                        }
+                        else
+                        {
+                            <span class="text-muted">N/A</span>
+                        }
+                    </td>
+
+                    <!-- Student Info -->
+                    <td>@s.StudentId</td>
+                    <td>@s.FullName</td>
+                    <td>@s.Faculty</td>
+                    <td>@s.Class</td>
+
+                    <!-- Voting Status -->
+                    <td>
+                        @if (s.HasVoted)
+                        {
+                            <span class="badge bg-success">Voted</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger">Not Voted</span>
+                        }
+                    </td>
+
+                    <!-- Voting Date -->
+                    <td>
+                        @if (eatTime.HasValue)
+                        {
+                            @eatTime.Value.ToString("yyyy-MM-dd")
+                        }
+                        else
+                        {
+                            <span class="text-muted">-</span>
+                        }
+                    </td>
+
+                    <!-- Voting Time -->
+                    <td>
+                        @if (eatTime.HasValue)
+                        {
+                            @eatTime.Value.ToString("hh:mm tt")
+                        }
+                        else
+                        {
+                            <span class="text-muted">-</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

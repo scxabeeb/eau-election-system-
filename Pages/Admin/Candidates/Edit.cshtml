@@ -1,0 +1,62 @@
+@page
+@model StudentElectionSystem.Pages.Admin.Candidates.EditModel
+@{
+    ViewData["Title"] = "Edit Candidate";
+}
+
+<h3 class="mb-4">Edit Candidate</h3>
+
+<form method="post" enctype="multipart/form-data" class="col-md-6">
+
+    <input type="hidden" asp-for="Candidate.Id" />
+    <input type="hidden" asp-for="Candidate.ImagePath" />
+
+    <!-- Current Image -->
+    <div class="mb-3">
+        <label class="form-label">Current Photo</label><br />
+        <img src="/candidate-images/@Model.Candidate.ImagePath"
+             width="90"
+             height="90"
+             class="rounded-circle border"
+             onerror="this.src='/candidate-images/default.png'" />
+    </div>
+
+    <div class="mb-2">
+        <label class="form-label">Full Name</label>
+        <input asp-for="Candidate.FullName" class="form-control" />
+        <span asp-validation-for="Candidate.FullName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-2">
+        <label class="form-label">Faculty</label>
+        <input asp-for="Candidate.Faculty" class="form-control" />
+        <span asp-validation-for="Candidate.Faculty" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Position</label>
+        <input asp-for="Candidate.Position" class="form-control" />
+        <span asp-validation-for="Candidate.Position" class="text-danger"></span>
+    </div>
+
+    <!-- Upload New Image -->
+    <div class="mb-3">
+        <label class="form-label">Change Photo (optional)</label>
+        <input type="file"
+               asp-for="CandidateImage"
+               class="form-control"
+               accept="image/*" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Update
+    </button>
+
+    <a asp-page="/Admin/Candidates/Index" class="btn btn-secondary ms-2">
+        Cancel
+    </a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,88 @@
+@page
+@model StudentElectionSystem.Pages.IndexModel
+
+@{
+    ViewData["Title"] = "Nidaamka Doorashada Ardayda";
+}
+
+<div class="container py-5">
+
+    <!-- HERO SECTION -->
+    <div class="text-center mb-5">
+        <img src="~/images/logo.jpg"
+             alt="EAU Logo"
+             width="110"
+             height="110"
+             class="rounded-circle shadow mb-3" />
+
+        <h1 class="fw-bold text-dark">JAAMACADDA BARIGA AFRIKA</h1>
+        <h5 class="text-muted">Garowe Campus</h5>
+
+        <h2 class="fw-bold mt-4 text-primary">
+            🎓 Nidaamka Doorashada Ardayda
+        </h2>
+
+        <p class="text-muted fs-5">
+            Nidaam Doorasho oo Ammaan ah • Hufan • Caddaalad ah
+        </p>
+    </div>
+
+
+    <!-- VOTE ACTION CARD -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-lg bg-primary text-white rounded-4">
+                <div class="card-body text-center p-4">
+                    <h3 class="fw-bold mb-3">🗳️ Codee Hadda</h3>
+                    <p class="mb-4">
+                        Is xaqiiji oo dhiibo codkaaga si ammaan ah.
+                    </p>
+                    <a href="/Vote/Verify"
+                       class="btn btn-light btn-lg fw-bold px-4">
+                        Bilow Cod Bixinta
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- PARTICIPATION PERCENTAGE ONLY -->
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+            @{
+                var percentage = Model.TotalStudents > 0
+                    ? (int)((double)Model.TotalVotes / Model.TotalStudents * 100)
+                    : 0;
+            }
+
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-body p-4 text-center">
+
+                    <h5 class="fw-bold mb-4">
+                        📊 Heerka Ka Qaybgalka Doorashada
+                    </h5>
+
+                    <div class="progress mx-auto" style="height: 30px;">
+                        <div class="progress-bar bg-success fw-bold fs-6"
+                             role="progressbar"
+                             style="width: @percentage%"
+                             aria-valuenow="@percentage"
+                             aria-valuemin="0"
+                             aria-valuemax="100">
+                            @percentage%
+                        </div>
+                    </div>
+
+                    <p class="text-muted mt-3 mb-0">
+                        Boqolkiiba ardayda ka qaybqaatay doorashada.
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

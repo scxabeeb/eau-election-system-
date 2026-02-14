@@ -1,0 +1,51 @@
+@page
+@model StudentElectionSystem.Pages.Admin.Students.EditModel
+
+<h3 class="mb-4">Edit Student</h3>
+
+<form method="post" enctype="multipart/form-data" class="col-md-6">
+
+    <input type="hidden" asp-for="Student.Id" />
+    <input type="hidden" asp-for="Student.ImagePath" />
+
+    <!-- Current Image -->
+    <div class="mb-3">
+        <label class="form-label">Current Photo</label><br />
+        <img src="/student-images/@Model.Student.ImagePath"
+             width="80"
+             height="80"
+             class="rounded-circle border"
+             onerror="this.src='/student-images/default.png'" />
+    </div>
+
+    <input asp-for="Student.StudentId"
+           class="form-control mb-2"
+           placeholder="Student ID" />
+
+    <input asp-for="Student.FullName"
+           class="form-control mb-2"
+           placeholder="Full Name" />
+
+    <input asp-for="Student.Faculty"
+           class="form-control mb-2"
+           placeholder="Faculty" />
+
+    <input asp-for="Student.Class"
+           class="form-control mb-3"
+           placeholder="Class" />
+
+    <!-- New Image Upload -->
+    <div class="mb-3">
+        <label class="form-label">Change Photo (optional)</label>
+        <input type="file"
+               asp-for="StudentImage"
+               class="form-control"
+               accept="image/*" />
+    </div>
+
+    <button class="btn btn-primary">Update</button>
+
+    <a asp-page="/Admin/Students/Index" class="btn btn-secondary ms-2">
+        Cancel
+    </a>
+</form>

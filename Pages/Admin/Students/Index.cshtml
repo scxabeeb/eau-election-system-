@@ -1,0 +1,49 @@
+@page
+@model StudentElectionSystem.Pages.Admin.Students.IndexModel
+@{
+    ViewData["Title"] = "Students";
+}
+
+<h3>Students</h3>
+
+<div class="mb-3 d-flex gap-2">
+    <a href="/Admin/Students/Create" class="btn btn-success">
+        ➕ Add Student
+    </a>
+
+    <a href="/Admin/Students/Upload" class="btn btn-primary">
+        ⬆ Upload Students
+    </a>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Faculty</th>
+            <th>Class</th>
+            <th>Voted</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var s in Model.Students)
+    {
+        <tr>
+            <td>@s.StudentId</td>
+            <td>@s.FullName</td>
+            <td>@s.Faculty</td>
+            <td>@s.Class</td>
+            <td>@(s.HasVoted ? "Yes" : "No")</td>
+            <td>
+                <a class="btn btn-sm btn-primary"
+                   href="/Admin/Students/Edit?id=@s.Id">Edit</a>
+
+                <a class="btn btn-sm btn-danger"
+                   href="/Admin/Students/Delete?id=@s.Id">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

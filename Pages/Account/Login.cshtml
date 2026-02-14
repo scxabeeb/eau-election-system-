@@ -1,0 +1,77 @@
+@page
+@model StudentElectionSystemFull.Pages.Account.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7">
+
+            <div class="card shadow-lg border-0 rounded-4">
+
+                <div class="card-header bg-dark text-white text-center rounded-top-4">
+                    <h4 class="mb-0">
+                        <i class="bi bi-shield-lock me-2"></i>
+                        Secure Login
+                    </h4>
+                </div>
+
+                <div class="card-body p-4">
+
+                    <!-- Validation Summary -->
+                    <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+                    <form method="post">
+
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Email Address</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-envelope"></i>
+                                </span>
+                                <input asp-for="Input.Email" class="form-control" placeholder="Enter your email" />
+                            </div>
+                            <span asp-validation-for="Input.Email" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Password</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-lock"></i>
+                                </span>
+                                <input asp-for="Input.Password" type="password" class="form-control" placeholder="Enter your password" />
+                            </div>
+                            <span asp-validation-for="Input.Password" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Remember Me -->
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">
+                                Remember Me
+                            </label>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-dark w-100 py-2 fw-semibold">
+                            <i class="bi bi-box-arrow-in-right me-1"></i>
+                            Login
+                        </button>
+
+                    </form>
+
+                </div>
+
+                <div class="card-footer text-center small text-muted">
+                    Student Election System
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

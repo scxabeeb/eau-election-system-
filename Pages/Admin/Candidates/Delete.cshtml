@@ -1,0 +1,19 @@
+@page
+@model StudentElectionSystem.Pages.Admin.Candidates.DeleteModel
+@{
+    ViewData["Title"] = "Delete Candidate";
+}
+
+<h3 class="text-danger">Delete Candidate</h3>
+
+<p>
+    Are you sure you want to delete
+    <strong>@Model.Candidate.FullName</strong>?
+</p>
+
+<form method="post">
+    <input type="hidden" asp-for="Candidate.Id" />
+
+    <button class="btn btn-danger">Yes, Delete</button>
+    <a href="/Admin/Candidates" class="btn btn-secondary">Cancel</a>
+</form>
