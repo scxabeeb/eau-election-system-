@@ -1,0 +1,61 @@
+{
+  "Files": [
+    {
+      "Id": "/Users/saedhabeb/Desktop/StudentElectionSystemFull/wwwroot/candidate-images/0aaeb482-ef50-4363-abe1-954682053fdc.JPG",
+      "PackagePath": "staticwebassets/candidate-images/0aaeb482-ef50-4363-abe1-954682053fdc.JPG"
+    },
+    {
+      "Id": "/Users/saedhabeb/Desktop/StudentElectionSystemFull/wwwroot/candidate-images/60e3873b-5136-43fe-96d9-06eecab5d663.jpeg",
+      "PackagePath": "staticwebassets/candidate-images/60e3873b-5136-43fe-96d9-06eecab5d663.jpeg"
+    },
+    {
+      "Id": "/Users/saedhabeb/Desktop/StudentElectionSystemFull/wwwroot/candidate-images/8b34082e-417e-4e56-9161-0dda257f332a.PNG",
+      "PackagePath": "staticwebassets/candidate-images/8b34082e-417e-4e56-9161-0dda257f332a.PNG"
+    },
+    {
+      "Id": "/Users/saedhabeb/Desktop/StudentElectionSystemFull/wwwroot/candidate-images/f1ba0d29-a123-4985-8c0b-cda3b4fddcd1.PNG",
+      "PackagePath": "staticwebassets/candidate-images/f1ba0d29-a123-4985-8c0b-cda3b4fddcd1.PNG"
+    },
+    {
+      "Id": "/Users/saedhabeb/Desktop/StudentElectionSystemFull/wwwroot/images/Logo.jpg",
+      "PackagePath": "staticwebassets/images/Logo.jpg"
+    },
+    {
+      "Id": "/Users/saedhabeb/Desktop/StudentElectionSystemFull/wwwroot/student-images/30bd32df-2889-462b-a6ac-9f9f16438e06.jpeg",
+      "PackagePath": "staticwebassets/student-images/30bd32df-2889-462b-a6ac-9f9f16438e06.jpeg"
+    },
+    {
+      "Id": "/Users/saedhabeb/Desktop/StudentElectionSystemFull/wwwroot/student-images/954cc867-0054-4a71-840a-a26ccf4275d8.PNG",
+      "PackagePath": "staticwebassets/student-images/954cc867-0054-4a71-840a-a26ccf4275d8.PNG"
+    },
+    {
+      "Id": "/Users/saedhabeb/Desktop/StudentElectionSystemFull/wwwroot/student-images/b12d0bf2-7648-4edd-a90f-4b6c2bbe35ac.PNG",
+      "PackagePath": "staticwebassets/student-images/b12d0bf2-7648-4edd-a90f-4b6c2bbe35ac.PNG"
+    },
+    {
+      "Id": "/Users/saedhabeb/Desktop/StudentElectionSystemFull/wwwroot/student-images/e7b005ca-bf88-47ca-a473-4341e575b9d6.jpeg",
+      "PackagePath": "staticwebassets/student-images/e7b005ca-bf88-47ca-a473-4341e575b9d6.jpeg"
+    },
+    {
+      "Id": "obj/Release/net8.0/staticwebassets/msbuild.StudentElectionSystem.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj/Release/net8.0/staticwebassets/msbuild.StudentElectionSystem.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Release/net8.0/staticwebassets/msbuild.build.StudentElectionSystem.props",
+      "PackagePath": "build\\StudentElectionSystem.props"
+    },
+    {
+      "Id": "obj/Release/net8.0/staticwebassets/msbuild.buildMultiTargeting.StudentElectionSystem.props",
+      "PackagePath": "buildMultiTargeting\\StudentElectionSystem.props"
+    },
+    {
+      "Id": "obj/Release/net8.0/staticwebassets/msbuild.buildTransitive.StudentElectionSystem.props",
+      "PackagePath": "buildTransitive\\StudentElectionSystem.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
